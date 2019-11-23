@@ -7,9 +7,9 @@ include \masm32\include\masm32rt.inc
 
 .data
 ;definicion de datos
-;---Direcciï¿½n de archivo de lectura
+;---Dirección de archivo de lectura
 FileName byte "test2.txt",0
-;---Cadenas de impresiï¿½n
+;---Cadenas de impresión
 ingreso db "Ingrese la palabra a buscar: ",0
 noencontrado db "La palabra no se encuentra en el archivo. ",0
 encontrado db "La palabra fue ingresada el ",0
@@ -26,7 +26,7 @@ temp dd ?
 temp2 dd ?
 ;---Handler
 hFile dd ?
-;---Tamaï¿½o de archivo
+;---Tamaño de archivo
 Filesize dd ?
 ;---Buffer de Lectura
 hMemory dd ?
@@ -36,17 +36,17 @@ BytesRead dd ?
 start:
 
 	main proc
-		;---Ingreso de la palabra de bï¿½squeda
+		;---Ingreso de la palabra de búsqueda
 		invoke StdOut, addr ingreso
 		invoke StdIn,addr buffer,100
 
-		;---Creaciï¿½n del handler para leer el archivo
+		;---Creación del handler para leer el archivo
 		invoke CreateFile,addr FileName,GENERIC_READ OR GENERIC_WRITE,FILE_SHARE_READ OR FILE_SHARE_WRITE, NULL,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL
 		mov hFile,eax
 		cmp hFile, INVALID_HANDLE_VALUE
 		jz code1
 
-		;---Determinar el tamaï¿½o del archivo
+		;---Determinar el tamaño del archivo
 		invoke GetFileSize,eax,0
 		mov Filesize, eax
 		inc eax
@@ -84,7 +84,7 @@ start:
 		MOVZX ebx, BYTE PTR [esi]
 		MOV temp, ebx
 
-		;---Convierte a mayï¿½sculas
+		;---Convierte a mayúsculas
 		call EBXmayuscula
 		call TEMP2mayuscula
 		;---Compara si son iguales o diferentes
@@ -93,7 +93,7 @@ start:
 		JNE diferentes
 
 		diferentes:
-		;---Se obtiene el siquiente caracter del archivo y se realiza de nuevo la comparaciï¿½n
+		;---Se obtiene el siquiente caracter del archivo y se realiza de nuevo la comparación
 		INC edi
 		MOVZX eax, BYTE PTR [edi]
 		CMP eax, 0
@@ -108,7 +108,7 @@ start:
 		;---Incrementa los punteros
 		INC esi
 		INC edi
-		;---Se obtiene el siquiente caracter del archivo y de la palabra. Se realiza de nuevo la comparaciï¿½n
+		;---Se obtiene el siquiente caracter del archivo y de la palabra. Se realiza de nuevo la comparación
 		MOVZX ebx, BYTE PTR [esi]
 		MOV temp, ebx
 		MOV ebx, temp
@@ -134,18 +134,18 @@ start:
 		JMP diferentes
 
 		evaluar:
-		;---Evaluaciï¿½n de al menos 1 resultado
+		;---Evaluación de al menos 1 resultado
 		CMP bEncontrado,0
 		JE noencontrada
 		JMP Fin
 
 		noencontrada:
-		;---Impresiï¿½n de la cadena no encontrada
+		;---Impresión de la cadena no encontrada
 		invoke StdOut, addr noencontrado
 		JMP Fin
 
 		encontrada:
-		;---Impresiï¿½n de la cadena encontrada junto a la fecha y vuelve a comenzar
+		;---Impresión de la cadena encontrada junto a la fecha y vuelve a comenzar
 		invoke StdOut, addr encontrado
 		INC bEncontrado
 		call imprimirFecha
@@ -168,7 +168,7 @@ start:
 		CMP eax, 32
 		JNE espacio
 	
-		;---Impresiï¿½n de la fecha
+		;---Impresión de la fecha
 		fecha:
 		INC edi
 		MOVZX eax, BYTE PTR [edi]
@@ -180,7 +180,7 @@ start:
 		ret
 	imprimirFecha endp
 
-	;---Funciones de conversiï¿½n a mayï¿½sculas
+	;---Funciones de conversión a mayúsculas
 	EAXmayuscula proc
 	CMP AX,61H
 	JB mayuscula
