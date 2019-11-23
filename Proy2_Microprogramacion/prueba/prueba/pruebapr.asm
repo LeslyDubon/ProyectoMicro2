@@ -24,7 +24,7 @@ format db 'You pressed %s',10,0
 WriteText  db "This is some test text.",0
 thechar db 0, 0
 ;---Formatos de fecha y hora
-formatofecha DB " dd-MM-yyyy",0
+formatofecha DB "  dd-MM-yyyy",0
 formatohora DB " hh:mm:ss",0
 espacio DB " ",0
 
@@ -75,8 +75,8 @@ fecha1:
 	;---Imprime un enter
 	mov thechar, 10
 	invoke SetFilePointer,hFile,0,0,FILE_END
-	mov BytesRead, 11
-	mov BytesWritten, 11
+	mov BytesRead, 12
+	mov BytesWritten, 12
 	;---Escribe la fecha y hora
 	invoke WriteFile, hFile, addr fechaBuf, BytesRead, addr BytesWritten,  0
 	invoke WriteFile, hFile, addr horaBuf, BytesRead, addr BytesWritten,  0
@@ -96,8 +96,8 @@ fecha2:
 	;---Imprime un enter
 	mov thechar, 10
 	invoke SetFilePointer,hFile,0,0,FILE_END
-	mov BytesRead, 11
-	mov BytesWritten, 11
+	mov BytesRead, 12
+	mov BytesWritten, 12
 	;---Escribe la fecha y hora
 	invoke WriteFile, hFile, addr fechaBuf, BytesRead, addr BytesWritten,  0
 	invoke WriteFile, hFile, addr horaBuf, BytesRead, addr BytesWritten,  0

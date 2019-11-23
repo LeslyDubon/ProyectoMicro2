@@ -36,9 +36,7 @@ BytesRead dd ?
 start:
 
 	main proc
-		;---Ingreso de la palabra de búsqueda
-		invoke StdOut, addr ingreso
-		invoke StdIn,addr buffer,100
+		
 
 		;---Creación del handler para leer el archivo
 		invoke CreateFile,addr FileName,GENERIC_READ OR GENERIC_WRITE,FILE_SHARE_READ OR FILE_SHARE_WRITE, NULL,OPEN_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL
@@ -61,6 +59,12 @@ start:
 		invoke ReadFile,hFile,hMemory,Filesize,ADDR BytesRead,0
 		invoke CloseHandle,hFile
 
+		invoke StdOut, hMemory
+
+		;---Ingreso de la palabra de búsqueda
+		invoke StdOut, addr ingreso
+		invoke StdIn,addr buffer,100
+		
 		call Buscar
 
 		invoke GlobalFree,hMemory
