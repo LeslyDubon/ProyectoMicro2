@@ -1,3 +1,0 @@
-﻿  Assembling Main.asm...
-\masm32\include\masm32rt.inc(33): warning A4011: multiple .MODEL directives found : .MODEL ignored
-  Proy2_Microprogramacion.vcxproj -> C:\Users\angel\Desktop\PROYECTO_MICRO\Proy2_Microprogramacion\Debug\Proy2_Microprogramacion.exe

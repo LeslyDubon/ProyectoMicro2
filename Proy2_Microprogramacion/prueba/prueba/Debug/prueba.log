@@ -1,0 +1,4 @@
+﻿  Assembling lec.asm...
+ReadFile.inc(2): warning A4011: multiple .MODEL directives found : .MODEL ignored
+\masm32\include\masm32rt.inc(33): warning A4011: multiple .MODEL directives found : .MODEL ignored
+  prueba.vcxproj -> C:\Users\User\Documents\U\Microprogramación\prueba\prueba\Debug\prueba.exe
